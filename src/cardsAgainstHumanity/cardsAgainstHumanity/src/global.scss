@@ -24,3 +24,95 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.game-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    font-weight: 700;
+    border-radius: 50px;
+    padding:25px 25px 25px 25px;
+    width:70%;
+}
+
+.game-card > ion-card-content {
+    font-size: 2em;
+}
+
+.white {
+    background-color: white;
+    color: black;
+}
+
+.black {
+    background-color: black;
+    color: white;
+}
+
+.white .placeholder {
+    background-color: black;
+}
+
+.black .placeholder {
+    background-color: white;
+}
+
+.game-card.white ion-card-title {
+    color: black;
+}
+
+.game-card.black ion-card-title {
+    color: white;
+}
+
+.game-card ion-input {
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.game-card.white ion-input {
+    background-color: black;
+    color:white; 
+}
+
+.game-card.black ion-input {
+    background-color: white;
+    color:black; 
+}
+
+.game-card-save-btn {
+    max-width: 500px;
+    margin-right: auto; 
+    margin-left: auto;
+    width:70%;
+    margin-top: 15px
+}
+
+.game-card.big {
+    height: 80%;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+.spin {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
