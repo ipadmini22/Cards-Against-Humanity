@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add White Card</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        Close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="game-card white"> 
+    <ion-card-content [innerHTML]="cardContent"> </ion-card-content>
+  </ion-card>
+
+  <ion-card class="game-card white"> 
+    <ion-card-header>
+      <ion-card-subtitle>Use 4 underscores for placeholder.</ion-card-subtitle>
+      <ion-card-title>Create Card</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input (ionInput)="valueChange($event)" placeholder="Card Value here..."></ion-input>
+      <ion-button expand="block" class="game-card-save-btn" color="light" (click)="save()">Save Card</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

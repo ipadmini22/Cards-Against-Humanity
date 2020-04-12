@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <!--img src="./madison.jpg" />-->
+    <ion-card-header>
+      <ion-card-subtitle>Destination</ion-card-subtitle>
+      <ion-card-title>Cards against humanity</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Just sign up via the form below.
+
+      <ion-input [(ngModel)]="mail" placeholder="Mail"></ion-input>
+      <ion-input [(ngModel)]="password" placeholder="Password"></ion-input>
+      <ion-button (click)="register()" expand="block">Register</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
