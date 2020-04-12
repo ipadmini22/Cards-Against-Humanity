@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -11,44 +12,35 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public user;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Register',
+      url: '/register',
+      icon: 'pencil'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Login',
+      url: '/register/login',
+      icon: 'log-in'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Settings',
+      url: '/settings',
+      icon: 'hammer'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private afa: AngularFireAuth
   ) {
     this.initializeApp();
   }
@@ -58,10 +50,72 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.afa.authState.subscribe(s => {
+      this.user = s;
+      if (this.user) {
+        this.appPages = [
+          {
+            title: 'Home',
+            url: '/home',
+            icon: 'home-sharp'
+          },
+          {
+            title: 'Game',
+            url: '/game',
+            icon: 'game-controller'
+          },
+          {
+            title: 'Friends',
+            url: '/friends',
+            icon: 'people'
+          },
+          {
+            title: 'Black-Cards',
+            url: '/black-cards',
+            icon: 'document'
+          },
+          {
+            title: 'White-Cards',
+            url: '/white-cards',
+            icon: 'document-outline'
+          },
+          {
+            title: 'Settings',
+            url: '/settings',
+            icon: 'hammer-sharp'
+          }
+        ];
+      } else {
+        this.appPages = [
+          {
+            title: 'Home',
+            url: '/home',
+            icon: 'home-sharp'
+          },
+          {
+            title: 'Register',
+            url: '/register',
+            icon: 'pencil-sharp'
+          },
+          {
+            title: 'Login',
+            url: '/register/login',
+            icon: 'log-in-sharp'
+          },
+          {
+            title: 'Settings',
+            url: '/settings',
+            icon: 'hammer-sharp'
+          }
+        ];
+      }
+      // console.dir(s);
+    });
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
+    const path = window.location.pathname.split('/')[1];
+    console.log(path);
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
